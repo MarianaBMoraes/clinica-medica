@@ -18,6 +18,7 @@ let consulta = {
 let opcao = "";
 
 console.log("Bem-vindo ao sistema de gerenciamento de consultas da clínica!");
+console.log("Digite o nome do paciente para agendar a consulta:");
 
 process.stdin.on("data", function (data) {
   let entrada = data.toString().trim().toLowerCase();
@@ -67,20 +68,24 @@ process.stdin.on("data", function (data) {
       opcao = "";
     } else {
       if (!consulta.paciente) {
-        livros.paciente = entrada;
+        consulta.paciente = entrada;
         console.log("Nome do médico:");
       } else if (!consulta.medico) {
         consulta.medico = entrada;
         console.log("Data da consulta (DD/MM/AAAA):");
       } else if (!consulta.data) {
         consulta.data = entrada;
-        console.log("Horário da consulta:");
+        console.log("Horário da consulta (HH:MM):");
       } else if (!consulta.horario) {
         consulta.horario = entrada;
-        consulta.push(consulta);
+        consultas.push(consulta);
         consulta = {};
         console.log("Consulta agendada com sucesso!");
         console.log("Para adicionar nova consulta, digite o nome do paciente:");
+        console.log("Para listagem de consultas, digite: 'listar'.");
+        console.log("Para cancelar uma consulta, digite: 'cancelar'.");
+        console.log("Para atualizar uma consulta, digite: 'atualizar'.");
+        console.log("Para sair do cadastro,  digite: 'sair'.");
       }
     }
   }
