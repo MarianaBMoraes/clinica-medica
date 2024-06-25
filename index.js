@@ -42,9 +42,9 @@ process.stdin.on("data", function (data) {
       for (let i = 0; i < consultas.length; i++) {
         if (consultas[i].paciente.toLowerCase() === entrada) {
           console.log(`Consulta encontrada para ${entrada}.`);
-          console.log("Digite o novo horário da consulta:");
-          consulta.data = entrada;
-          opcao = "";
+          console.log("Digite o nome do novo médico:");
+          opcao = "atualizar_medico";
+          consulta = consultas[i];
           encontrou = true;
           break;
         }
@@ -53,6 +53,18 @@ process.stdin.on("data", function (data) {
         console.log(`Consulta não encontrada para ${entrada}.`);
         opcao = "";
       }
+    } else if (opcao === "atualizar_medico") {
+      consulta.medico = entrada;
+      console.log("Digite a nova data da consulta (DD/MM/AAAA):");
+      opcao = "atualizar_data";
+    } else if (opcao === "atualizar_data") {
+      consulta.data = entrada;
+      console.log("Digite o novo horário da consulta (HH:MM):");
+      opcao = "atualizar_horario";
+    } else if (opcao === "atualizar_horario") {
+      consulta.horario = entrada;
+      console.log("Consulta atualizada com sucesso!");
+      opcao = "";
     } else if (opcao === "cancelar") {
       let encontrou = false;
       for (let i = 0; i < consultas.length; i++) {
