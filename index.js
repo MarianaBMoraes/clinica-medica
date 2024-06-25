@@ -11,7 +11,6 @@ let consultas = [];
 let consulta = {
   paciente: "",
   médico: "",
-  especialidade: "",
   data: "",
   horario: "",
 };
@@ -42,15 +41,16 @@ process.stdin.on("data", function (data) {
       let encontrou = false;
       for (let i = 0; i < consultas.length; i++) {
         if (consultas[i].paciente.toLowerCase() === entrada) {
-          console.log("Consulta encontrada para ${entrada}.");
+          console.log(`Consulta encontrada para ${entrada}.`);
           console.log("Digite o novo horário da consulta:");
-          opcao = "atualizar_horario";
+          consulta.data = entrada;
+          opcao = "";
           encontrou = true;
           break;
         }
       }
       if (!encontrou) {
-        console.log("Consulta não encontrada para ${entrada}.");
+        console.log(`Consulta não encontrada para ${entrada}.`);
         opcao = "";
       }
     } else if (opcao === "cancelar") {
@@ -58,13 +58,13 @@ process.stdin.on("data", function (data) {
       for (let i = 0; i < consultas.length; i++) {
         if (consultas[i].paciente.toLowerCase() === entrada) {
           consultas.splice(i, 1);
-          console.log("Consulta de ${entrada} cancelada com sucesso.");
+          console.log(`Consulta de ${entrada} cancelada com sucesso.`);
           encontrou = true;
           break;
         }
       }
       if (!encontrou) {
-        console.log("Consulta não encontrada para ${entrada}.");
+        console.log(`Consulta não encontrada para ${entrada}.`);
       }
       opcao = "";
     } else {
@@ -73,9 +73,6 @@ process.stdin.on("data", function (data) {
         console.log("Nome do médico:");
       } else if (!consulta.medico) {
         consulta.medico = entrada;
-        console.log("Qual a especialidade:");
-      } else if (!consulta.especialidade){
-        consulta.especialidade = entrada;
         console.log("Data da consulta (DD/MM/AAAA):");
       } else if (!consulta.data) {
         consulta.data = entrada;
