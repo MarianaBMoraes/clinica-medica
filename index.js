@@ -40,7 +40,7 @@ process.stdin.on("data", function (data) {
   } else {
     if (opcao === "atualizar") {
       let encontrou = false;
-      for (let i = 0; i < biblioteca.length; i++) {
+      for (let i = 0; i < consultas.length; i++) {
         if (consultas[i].paciente.toLowerCase() === entrada) {
           console.log("Consulta encontrada para ${entrada}.");
           console.log("Digite o novo horário da consulta:");
@@ -55,7 +55,7 @@ process.stdin.on("data", function (data) {
       }
     } else if (opcao === "cancelar") {
       let encontrou = false;
-      for (let i = 0; i < biblioteca.length; i++) {
+      for (let i = 0; i < consultas.length; i++) {
         if (consultas[i].paciente.toLowerCase() === entrada) {
           consultas.splice(i, 1);
           console.log("Consulta de ${entrada} cancelada com sucesso.");
