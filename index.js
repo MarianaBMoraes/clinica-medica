@@ -38,7 +38,50 @@ process.stdin.on("data", function (data) {
   } else {
     if (opcao === "atualizar") {
       let encontrou = false;
-      for (let i = 0; i < biblioteca.length; i++) {}
+      for (let i = 0; i < biblioteca.length; i++) {
+        if (consultas[i].paciente.toLowerCase() === entrada) {
+          console.log("Consulta encontrada para ${entrada}.");
+          console.log("Digite o novo horário da consulta:");
+          opcao = "atualizar_horario";
+          encontrou = true;
+          break;
+        }
+      }
+      if (!encontrou) {
+        console.log("Consulta não encontrada para ${entrada}.");
+        opcao = "";
+      }
+    } else if (opcao === "cancelar") {
+      let encontrou = false;
+      for (let i = 0; i < biblioteca.length; i++) {
+        if (consultas[i].paciente.toLowerCase() === entrada) {
+          consultas.splice(i, 1);
+          console.log("Consulta de ${entrada} cancelada com sucesso.");
+          encontrou = true;
+          break;
+        }
+      }
+      if (!encontrou) {
+        console.log("Consulta não encontrada para ${entrada}.");
+      }
+      opcao = "";
+    } else {
+      if (!consulta.paciente) {
+        livros.paciente = entrada;
+        console.log("Nome do médico:");
+      } else if (!consulta.medico) {
+        consulta.medico = entrada;
+        console.log("Data da consulta (DD/MM/AAAA):");
+      } else if (!consulta.data) {
+        consulta.data = entrada;
+        console.log("Horário da consulta:");
+      } else if (!consulta.horario) {
+        consulta.horario = entrada;
+        consulta.push(consulta);
+        consulta = {};
+        console.log("Consulta agendada com sucesso!");
+        console.log("Para adicionar nova consulta, digite o nome do paciente:");
+      }
     }
   }
 });
