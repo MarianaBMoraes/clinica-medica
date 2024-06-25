@@ -11,6 +11,7 @@ let consultas = [];
 let consulta = {
   paciente: "",
   médico: "",
+  especialidade: "",
   data: "",
   horario: "",
 };
@@ -72,6 +73,9 @@ process.stdin.on("data", function (data) {
         console.log("Nome do médico:");
       } else if (!consulta.medico) {
         consulta.medico = entrada;
+        console.log("Qual a especialidade:");
+      } else if (!consulta.especialidade){
+        consulta.especialidade = entrada;
         console.log("Data da consulta (DD/MM/AAAA):");
       } else if (!consulta.data) {
         consulta.data = entrada;
