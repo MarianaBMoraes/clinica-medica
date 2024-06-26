@@ -1,42 +1,3 @@
-### Sistema de Gerenciamento de Consultas Médicas
-
-Este é um sistema simples para gerenciar as consultas de uma clínica médica, implementado em Node.js utilizando entrada de dados via console.
-
-#### Funcionalidades
-
-1. **Adicionar uma nova consulta**
-   - Permite agendar uma nova consulta fornecendo o nome do paciente, médico, data e horário.
-
-2. **Listar todas as consultas**
-   - Exibe todas as consultas agendadas até o momento.
-
-3. **Atualizar uma consulta existente**
-   - Permite alterar qualquer informação de uma consulta já agendada, selecionando-a pelo nome do paciente.
-
-4. **Cancelar uma consulta**
-   - Remove uma consulta da lista, selecionando-a pelo nome do paciente.
-
-#### Como Usar
-
-Para iniciar o sistema, execute o script em Node.js. Ele iniciará o prompt interativo para interação com o usuário.
-
-#### Comandos Disponíveis
-
-- **Para agendar uma consulta:** Digite o nome do paciente, médico, data (DD/MM/AAAA) e horário (HH:MM).
-- **Para listar consultas:** Digite 'listar'.
-- **Para atualizar uma consulta:** Digite 'atualizar' e siga as instruções para selecionar a consulta e atualizar as informações desejadas.
-- **Para cancelar uma consulta:** Digite 'cancelar' e forneça o nome do paciente da consulta a ser cancelada.
-- **Para sair do sistema:** Digite 'sair'.
-
-#### Exemplo de Uso
-
-```bash
-$ node nome_do_arquivo.js
-```
-
-#### Exemplo de Código
-
-```javascript
 let consultas = [];
 
 let consulta = {
@@ -134,4 +95,3 @@ process.stdin.on("data", function (data) {
     }
   }
 });
-```
